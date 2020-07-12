@@ -291,7 +291,8 @@ class CognitoIdpUser(BaseModel):
         self.password = password
         self.status = status
         self.enabled = True
-        self.attributes = attributes
+        self.attributes = [{'Name': 'sub', 'Value': self.id}]
+        self.attributes.extend(attributes)
         self.create_date = datetime.datetime.utcnow()
         self.last_modified_date = datetime.datetime.utcnow()
 
